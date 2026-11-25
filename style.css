@@ -1,0 +1,135 @@
+/* ---------- Reset & tokens ---------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #1b2a33;
+  --muted: #5b6b75;
+  --bg: #eef2f4;
+  --card: #ffffff;
+  --accent: #0f766e;
+  --accent-dark: #0b5650;
+  --sale: #e4572e;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+/* ---------- Header / footer ---------- */
+.site-header {
+  padding: 48px 24px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.site-header h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2.4rem;
+  letter-spacing: -0.5px;
+}
+.site-header p { color: var(--muted); margin-top: 4px; }
+
+.site-footer {
+  text-align: center;
+  padding: 32px 16px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ---------- THE KEY RULE: auto-fit grid, min card width 250px, no media queries ---------- */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 24px 24px;
+}
+
+/* ---------- Card ---------- */
+.card {
+  background: var(--card);
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 6px rgba(27, 42, 51, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 30px rgba(27, 42, 51, 0.18);
+}
+
+/* Product "image" area (gradient + emoji, so no external files are needed) */
+.card-img {
+  position: relative;
+  height: 190px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.card-img span {
+  font-size: 4.5rem;
+  transition: transform 0.4s ease;
+}
+.card:hover .card-img span { transform: scale(1.25) rotate(-6deg); }
+
+.tone-1 { background: linear-gradient(135deg, #bfe3dc, #7fc4b8); }
+.tone-2 { background: linear-gradient(135deg, #cfd8f6, #98a9e6); }
+.tone-3 { background: linear-gradient(135deg, #fbd9c9, #f2a98a); }
+.tone-4 { background: linear-gradient(135deg, #e2e2e2, #b9bcc2); }
+.tone-5 { background: linear-gradient(135deg, #f6e3a8, #e8c45d); }
+.tone-6 { background: linear-gradient(135deg, #d9ecc4, #a7cf7e); }
+.tone-7 { background: linear-gradient(135deg, #fce5b8, #f5c26b); }
+.tone-8 { background: linear-gradient(135deg, #d3e6f2, #8cbbd9); }
+
+/* Badges */
+.badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-style: normal;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--accent);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+.badge.sale { background: var(--sale); }
+
+/* Card text */
+.card-body {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+.card-body h2 { font-size: 1.1rem; }
+.desc { color: var(--muted); font-size: 0.92rem; flex: 1; }
+
+.card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+.price { font-size: 1.2rem; font-weight: 700; }
+
+/* Button */
+button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 9px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+button:hover { background: var(--accent-dark); transform: scale(1.06); }
+button:focus-visible { outline: 3px solid var(--sale); outline-offset: 2px; }
